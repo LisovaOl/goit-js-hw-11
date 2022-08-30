@@ -70,7 +70,9 @@ button:before {
 button:hover:before {
   left: 100%;
 }
-
+.load-more {
+  display: none;
+}
 .gallery {
   display: grid;
   max-width: 1140px;
@@ -150,17 +152,17 @@ img:focus {
 }
 
 .comments::before {
-  background-image: url('../images/bubble2.svg');
+  background-image: url('../images/bubble.svg');
 }
 
 .downloads::before {
-  background-image: url('../images/folder-download.svg');
+  background-image: url('../images/download.svg');
 }
 
-.icon {
+/* .icon {
   display: block;
   width: 20px;
   height: 20px;
   fill: #212121;
   overflow: hidden;
-}
+} */

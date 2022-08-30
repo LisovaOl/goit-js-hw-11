@@ -74,10 +74,9 @@ async function onLoadMore(data) {
         if (fetchedImages >= data.totalHits) {
           fetchedAll = true;
         }
-        console.log(fetchedAll);
+        // console.log(fetchedAll);
       })
       .catch(error => {
-        console.log(error);
         Notify.failure('Oooops, something went wrong, try again');
       });
     simplelightbox.refresh();
