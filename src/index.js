@@ -25,6 +25,7 @@ let page = 1;
 let query = '';
 const perPage = 40;
 let fetchedAll = false;
+const IMAGES_LIMIT = 500;
 
 function onSearch(event) {
   event.preventDefault();
@@ -55,7 +56,7 @@ function onSearch(event) {
 
 async function onLoadMore(data) {
   if (data[0].isIntersecting) {
-    if (fetchedAll) {
+    if (fetchedAll >= IMAGES_LIMIT) {
       Notify.info(
         "We are sorry, but you've reached the end of search results."
       );
