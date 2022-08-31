@@ -25,7 +25,6 @@ let page = 1;
 let query = '';
 const perPage = 40;
 let fetchedAll = false;
-const IMAGES_LIMIT = 500;
 
 function onSearch(event) {
   event.preventDefault();
@@ -56,7 +55,7 @@ function onSearch(event) {
 
 async function onLoadMore(data) {
   if (data[0].isIntersecting) {
-    if (fetchedAll >= IMAGES_LIMIT) {
+    if (fetchedAll) {
       Notify.info(
         "We are sorry, but you've reached the end of search results."
       );
@@ -71,14 +70,19 @@ async function onLoadMore(data) {
         appendImagesMarkup(data.hits);
         simplelightbox = new SimpleLightbox('.gallery a').refresh();
 
-        const fetchedImages = (page - 1) * perPage + data.hits.length;
-        if (fetchedImages >= data.totalHits) {
-          fetchedAll = true;
-        }
+        // const fetchedImages = (page - 1) * perPage + data.hits.length;
+        // console.log(fetchedImages)
+        // if (fetchedImages >= data.totalHits) {
+        //   Notify.info(
+        //     "We are sorry, but you've reached the end of search results."
+        //   );
+        // }
         // console.log(fetchedAll);
       })
       .catch(error => {
-        Notify.failure('Oooops, something went wrong, try again');
+        Notify.info(
+          "We are sorry, but you've reached the end of search results."
+        );
       });
     simplelightbox.refresh();
   }
