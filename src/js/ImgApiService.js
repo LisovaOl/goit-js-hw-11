@@ -14,7 +14,7 @@ async function fetchImages(query, page, perPage) {
           'Sorry, there are no images matching your search query. Please try again.'
         );
       }
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     });
 
