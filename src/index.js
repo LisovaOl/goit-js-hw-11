@@ -65,26 +65,16 @@ async function onLoadMore(data) {
 
     page += 1;
 
-    await fetchImages(query, page, perPage)
-      .then(data => {
-        appendImagesMarkup(data.hits);
-        simplelightbox = new SimpleLightbox('.gallery a').refresh();
+  try { await fetchImages(query, page, perPage)
+    .then(data => {
+      appendImagesMarkup(data.hits);
 
-        // const fetchedImages = (page - 1) * perPage + data.hits.length;
-        // console.log(fetchedImages)
-        // if (fetchedImages >= data.totalHits) {
-        //   Notify.info(
-        //     "We are sorry, but you've reached the end of search results."
-        //   );
-        // }
-        // console.log(fetchedAll);
-      })
-      .catch(error => {
+    })}
+      catch(error) {
         Notify.info(
           "We are sorry, but you've reached the end of search results."
         );
-      });
-    simplelightbox.refresh();
+      };
   }
 }
 
