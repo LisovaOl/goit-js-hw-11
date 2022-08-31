@@ -68,12 +68,18 @@ async function onLoadMore(data) {
   try { await fetchImages(query, page, perPage)
     .then(data => {
       appendImagesMarkup(data.hits);
-
-    })}
+      const fetchedImages = (page - 1) * perPage + data.hits.length;
+        // console.log(fetchedImages)
+        if (fetchedImages >= data.totalHits) {
+          Notify.info(
+            "We are sorry, but you've reached the end of search results."
+          );
+        }
+        // console.log(fetchedAll);
+      })
+    }
       catch(error) {
-        Notify.info(
-          "We are sorry, but you've reached the end of search results."
-        );
+        Notify.failure('Oooops, something went wrong, try again');
       };
   }
 }
