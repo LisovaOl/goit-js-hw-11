@@ -55,6 +55,7 @@ function onSearch(event) {
 
 async function onLoadMore(data) {
   if (data[0].isIntersecting) {
+    
     if (fetchedAll) {
       Notify.info(
         "We are sorry, but you've reached the end of search results."
@@ -78,9 +79,9 @@ async function onLoadMore(data) {
         // console.log(fetchedAll);
       })
     }
-      catch(error) {
-        Notify.failure('Oooops, something went wrong, try again');
-      };
+      // catch(error) {
+      //   Notify.failure('Oooops, something went wrong, try again');
+      // };
   }
 }
 
